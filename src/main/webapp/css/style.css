@@ -1,0 +1,283 @@
+/* style.css */
+
+/* ============ 全局设置 ============ */
+body {
+    font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    height: 100vh;
+    overflow: hidden; /* 防止此时出现双重滚动条 */
+}
+
+/* ============ 顶部导航栏 ============ */
+.header {
+    background-color: #007bff; /* 主题蓝 */
+    color: white;
+    padding: 0 20px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.header a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.header a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* ============ 主布局容器 ============ */
+.container {
+    display: flex;
+    height: calc(100vh - 60px); /* 减去头部高度 */
+}
+
+/* ============ 左侧边栏 (用户列表) ============ */
+.sidebar {
+    width: 260px;
+    background-color: white;
+    border-right: 1px solid #dee2e6;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-count {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+    font-weight: bold;
+    color: #495057;
+}
+
+.tips {
+    font-size: 12px;
+    color: #888;
+    padding: 10px 15px;
+    background-color: #fff3cd; /* 黄色提示背景 */
+    color: #856404;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.online-users {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto; /* 允许列表滚动 */
+    flex: 1;
+}
+
+.online-users li {
+    display: flex;
+    align-items: center;
+}
+
+.online-users li:hover {
+    background-color: #f8f9fa;
+}
+
+/* 选中状态（正在私聊该用户） */
+.online-users li.active {
+    background-color: #e7f5ff;
+    border-right: 4px solid #007bff;
+}
+
+/* 用户名左侧的小圆点装饰 */
+.online-users li::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #28a745; /* 在线绿 */
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* ============ 右侧聊天主区域 ============ */
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #e5ddd5; /* 类似微信/WhatsApp背景 */
+}
+
+/* 私聊状态提示栏 */
+#chatTargetInfo {
+    padding: 10px 20px;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #dcdcdc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    height: 30px;
+}
+
+.cancel-private {
+    color: #007bff;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/* 消息滚动区域 */
+.chat-area {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* ============ 消息气泡样式 ============ */
+.message {
+    max-width: 70%;
+    padding: 8px 12px;
+    border-radius: 8px;
+    position: relative;
+    word-wrap: break-word;
+    font-size: 14px;
+    line-height: 1.5;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.message-header {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 4px;
+}
+
+.message-content {
+    color: #333;
+}
+
+/* 别人的消息 */
+.message.other {
+    align-self: flex-start; /* 靠左 */
+    background-color: white;
+    border-top-left-radius: 0;
+}
+
+/* 自己的消息 */
+.message.self {
+    align-self: flex-end; /* 靠右 */
+    background-color: #dcf8c6; /* 微信绿 */
+    border-top-right-radius: 0;
+}
+
+/* 系统消息 */
+.message.system {
+    align-self: center;
+    background-color: rgba(0,0,0,0.2);
+    color: white;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    max-width: 90%;
+}
+
+.message.system .message-content {
+    color: white;
+}
+
+/* 私聊消息的特殊样式 */
+.message.private {
+    border: 2px solid #ffc107; /* 黄色边框区分 */
+}
+
+.message.private .message-header {
+    color: #d39e00;
+    font-weight: bold;
+}
+
+/* ============ 底部输入框 ============ */
+.input-area {
+    padding: 15px 20px;
+    background-color: #f0f0f0;
+    border-top: 1px solid #dcdcdc;
+    display: flex;
+    gap: 10px;
+}
+
+#messageInput {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    font-size: 14px;
+}
+
+#messageInput:focus {
+    border-color: #007bff;
+    background-color: white;
+}
+
+#sendButton {
+    padding: 0 25px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+#sendButton:hover {
+    background-color: #0056b3;
+}
+
+#sendButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+.user-avatar {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: #6c757d; /* 默认灰色 */
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+.message.system {
+    align-self: center;        /* 居中显示 */
+    background-color: transparent; /* 背景透明 */
+    box-shadow: none;          /* 去掉阴影 */
+    max-width: 100%;           /* 允许宽度撑开 */
+    margin: 10px 0;            /* 上下留白 */
+    padding: 0;
+    text-align: center;
+}
+
+.message.system .message-content {
+    background-color: #e0e0e0; /* 灰色胶囊背景 */
+    color: #666;               /* 深灰文字 */
+    font-size: 12px;           /* 小字号 */
+    padding: 3px 15px;
+    border-radius: 20px;       /* 圆角胶囊形状 */
+    display: inline-block;     /* 包裹内容 */
+}
+
+/* 系统消息不需要显示头部时间/名字 */
+.message.system .message-header {
+    display: none;
+}
