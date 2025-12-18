@@ -34,7 +34,8 @@
 
 ## 📂 项目结构 (Project Structure)
 
-```text
+```
+text
 src/main
 ├── java/com/example/chatapp
 │   ├── User.java                 # 用户实体类
@@ -57,6 +58,7 @@ src/main
     ├── chatroom.jsp              # 聊天主页面 (包含核心 JS 逻辑)
     ├── login.jsp                 # 登录页面
     └── WEB-INF/web.xml           # 部署描述符
+```
 # 🚀 核心实现原理 (Key Concepts)
 1. 消息同步机制：短轮询 (Short Polling)
 项目未使用 WebSocket，而是采用了更基础的 AJAX 短轮询 机制。
@@ -99,5 +101,5 @@ admin
 user1
 user2
 user3
-📝 License
+# 📝 License
 This project is open-source and available under the MIT License.
